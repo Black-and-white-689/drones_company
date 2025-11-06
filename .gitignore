@@ -2,9 +2,17 @@
 .vscode/
 *.iml
 .env
+*.env
 .DS_Store
 venv/
 .venv/
 .pytest_cache/
 **__pycache__/
 db.sqlite3
+logs/
+*.secret
+node_modules/
+__pycache__/
+*.pyc
+/static/
+media/
