@@ -95,4 +95,15 @@ class TaskTypeAdmin(admin.ModelAdmin):
 
     def task_count(self, obj):
         return obj.task_count()
-    task_count.short_description = "Tasks count"
+    task_count.short_description = "Number of tasks"
+
+
+@admin.register(Position)
+class PositionAdmin(admin.ModelAdmin):
+    list_display = ("name", "worker_count")
+    search_fields = ("name",)
+    inlines = [TaskInline]
+
+    def worker_count(self, obj):
+        return obj.worker_count()
+    worker_count.short_description = "Number of workers"
