@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>All Workers</h2>
+
+<form method="get" class="mb-3">
+  {{ search_form.q }}
+  <button class="btn btn-primary" type="submit">
+    Search
+  </button>
+  <a
+      href="{% url 'drones:worker-create' %}"
+      class="btn btn-success float-end">
+    [+ Add Worker]
+  </a>
+</form>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>
+      ID
+    </th>
+    <th>
+      Username
+    </th>
+    <th>
+      Position
+    </th>
+    <th>
+      Actions
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for worker in worker_list %}
+    <tr>
+      <td>
+        {{ worker.id }}
+      </td>
+      <td>
+        <a href="{% url 'drones:worker-detail' worker.id %}">
+          {{ worker.username }}
+        </a>
+      </td>
+      <td>
+        {{ worker.position }}
+      </td>
+      <td>
+        <a
+            href="{% url 'drones:worker-delete' worker.id %}"
+            class="btn btn-sm btn-danger">
+          Delete
+        </a>
+      </td>
+    </tr>
+  {% empty %}
+    <tr>
+      <td colspan="4">
+        No workers found.
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% include "includes/pagination.html" %}
+{% endblock %}
