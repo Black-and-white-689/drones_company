@@ -20,7 +20,8 @@ class Worker(AbstractUser):
         verbose_name_plural = "workers"
 
     def __str__(self):
-        return f"{self.username}: ({self.first_name} {self.last_name})"
+        return (f"{self.username}: ({self.first_name} {self.last_name}, "
+                f"Position: {self.position})")
 
     def get_absolute_url(self):
         return reverse("drones:worker-detail", kwargs={"pk": self.pk})

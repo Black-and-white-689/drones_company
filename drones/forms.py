@@ -5,3 +5,5 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 
 from drones.models import Worker, Task, TaskType, Position
+
+
