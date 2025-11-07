@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ task.name }}</h2>
+<p>
+  <b>Deadline:
+  </b>
+  {{ task.deadline }}
+</p>
+<p>
+  <b>
+    Description:
+  </b>
+  {{ task.description }}
+</p>
+<p>
+  <b>
+    Priority:
+  </b>
+  {{ task.priority }}
+</p>
+<p>
+  <b>
+    Type:
+  </b>
+  {{ task.task_type.name }}
+</p>
+
+<hr>
+<h5>
+  Assigned Workers:
+</h5>
+<ul>
+  {% for worker in task.assignees.all %}
+    <li>
+      {{ worker.username }} ({{ worker.position }})
+    </li>
+  {% empty %}
+    <li>
+      No one assigned.
+    </li>
+  {% endfor %}
+</ul>
+
+<a
+    href="{% url 'drones:task-toggle-assign' task.id %}"
+    class="btn btn-outline-primary">
+  Toggle assign to me
+</a>
+{% endblock %}
