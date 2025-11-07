@@ -108,3 +108,40 @@ class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
 class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = get_user_model()
     success_url = reverse_lazy("drones:worker-list")
+
+
+#  Positions
+class PositionListView(LoginRequiredMixin, generic.ListView):
+    model = Position
+    template_name = "drones/position_list.html"
+    context_object_name = "position_list"
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = PositionSearchForm(self.request.GET)
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get("q")
+        if query:
+            queryset = queryset.filter(name__icontains=query)
+        return queryset.order_by("id")
+
+
+class PositionCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Position
+    fields = "__all__"
+    success_url = reverse_lazy("drones:position-list")
+
+
+class PositionUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Position
+    fields = "__all__"
+    success_url = reverse_lazy("drones:position-list")
+
+
+class PositionDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Position
+    success_url = reverse_lazy("drones:position-list")
