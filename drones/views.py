@@ -66,3 +66,45 @@ class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
 class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Task
     success_url = reverse_lazy("drones:task-list")
+
+
+#  Workers
+class WorkerListView(LoginRequiredMixin, generic.ListView):
+    model = get_user_model()
+    template_name = "drones/worker_list.html"
+    context_object_name = "worker_list"
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = WorkerSearchForm(self.request.GET)
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset().select_related("position")
+        query = self.request.GET.get("q")
+        if query:
+            queryset = queryset.filter(
+                Q(username__icontains=query) |
+                Q(first_name__icontains=query) |
+                Q(last_name__icontains=query)
+            )
+        return queryset.order_by("id")
+
+
+class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
+    model = get_user_model()
+    template_name = "drones/worker_detail.html"
+    queryset = get_user_model().objects.prefetch_related("tasks__task_type")
+
+
+class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
+    model = get_user_model()
+    form_class = WorkerCreationForm
+    template_name = "drones/worker_form.html"
+    success_url = reverse_lazy("drones:worker-list")
+
+
+class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = get_user_model()
+    success_url = reverse_lazy("drones:worker-list")
