@@ -145,3 +145,40 @@ class PositionUpdateView(LoginRequiredMixin, generic.UpdateView):
 class PositionDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Position
     success_url = reverse_lazy("drones:position-list")
+
+
+#  Task_types
+class TaskTypeListView(LoginRequiredMixin, generic.ListView):
+    model = TaskType
+    template_name = "drones/tasktype_list.html"
+    context_object_name = "tasktype_list"
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = TaskTypeSearchForm(self.request.GET)
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get("q")
+        if query:
+            queryset = queryset.filter(name__icontains=query)
+        return queryset.order_by("id")
+
+
+class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("drones:tasktype-list")
+
+
+class TaskTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("drones:tasktype-list")
+
+
+class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = TaskType
+    success_url = reverse_lazy("drones:tasktype-list")
