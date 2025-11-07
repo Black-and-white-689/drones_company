@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <div class="container mt-5" style="max-width: 500px;">
+    <h2 class="text-center mb-4">🔐 Login</h2>
+
+    {% if form.errors %}
+      <div class="alert alert-danger">
+        <strong>Incorrect username or password.</strong> Please try again.
+      </div>
+    {% endif %}
+
+    {% if next %}
+      <p class="text-muted text-center">Please log in to see this page.</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      {{ form|crispy }}
+
+      <div class="d-grid gap-2 mt-3">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+      <input type="hidden" name="next" value="{{ next }}">
+    </form>
+
+    <div class="text-center mt-3">
+      <a href="{% url 'password_reset' %}">Forgot password?</a>
+    </div>
+  </div>
+{% endblock %}
