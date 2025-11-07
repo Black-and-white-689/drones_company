@@ -1,77 +1,86 @@
 {% extends "base.html" %}
-{% block title %}
-  <title>Drones Dashboard</title>
-{% endblock %}
-
 {% block content %}
-  <h1 class="mb-4">Welcome to Drones Management System</h1>
+<h1 class="mb-4">Drones Management Dashboard</h1>
 
-  <div class="row text-center">
-    <div class="col-md-3 mb-3">
-      <div class="card border-primary shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-primary">Total Tasks</h5>
-          <p class="display-6">{{ num_tasks_total }}</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <div class="card border-success shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-success">Completed</h5>
-          <p class="display-6">{{ num_tasks_done }}</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <div class="card border-warning shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-warning">Pending</h5>
-          <p class="display-6">{{ num_tasks_pending }}</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <div class="card border-info shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title text-info">Workers</h5>
-          <p class="display-6">{{ num_workers }}</p>
-        </div>
+<div class="row text-center">
+  <div class="col-md-3">
+    <div class="card border-primary shadow-sm">
+      <div class="card-body">
+    <h5>Total Tasks</h5>
+        <p class="display-6">
+          {{ num_tasks_total }}
+        </p>
       </div>
     </div>
   </div>
+  <div class="col-md-3">
+    <div class="card border-success shadow-sm">
+      <div class="card-body">
+    <h5>Completed</h5>
+        <p class="display-6">
+          {{ num_tasks_done }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-warning shadow-sm">
+      <div class="card-body">
+    <h5>Pending</h5>
+        <p class="display-6">
+          {{ num_tasks_pending }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card border-info shadow-sm">
+      <div class="card-body">
+    <h5>Workers</h5>
+        <p class="display-6">
+          {{ num_workers }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <hr class="my-4">
-
-  <h3 class="mb-3">Tasks completed in {{ current_month }}</h3>
-  {% if tasks_done_this_month %}
-    <table class="table table-striped table-bordered">
-      <thead class="table-light">
-        <tr>
-          <th>#</th>
-          <th>Task Name</th>
-          <th>Deadline</th>
-          <th>Type</th>
-          <th>Priority</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for task in tasks_done_this_month %}
-        <tr>
-          <td>{{ forloop.counter }}</td>
-          <td>{{ task.name }}</td>
-          <td>{{ task.deadline }}</td>
-          <td>{{ task.task_type.name }}</td>
-          <td>{{ task.priority }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <p>No tasks were completed in {{ current_month }}.</p>
-  {% endif %}
-
-  <p class="text-muted mt-4">
-    You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
-  </p>
+<hr>
+<h4>Tasks completed in {{ current_month }}</h4>
+{% if tasks_done_this_month %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Deadline
+      </th>
+      <th>
+        Type
+      </th>
+      <th>
+        Priority
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for task in tasks_done_this_month %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ task.name }}</td>
+      <td>{{ task.deadline }}</td>
+      <td>{{ task.task_type.name }}</td>
+      <td>{{ task.priority }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+  <p>No tasks completed this month.</p>
+{% endif %}
 {% endblock %}
