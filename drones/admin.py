@@ -85,3 +85,14 @@ class TaskAdmin(admin.ModelAdmin):
     def display_assignees(self, obj):
         return ", ".join([worker.username for worker in obj.assignees.all()])
     display_assignees.short_description = "Workers"
+
+
+@admin.register(TaskType)
+class TaskTypeAdmin(admin.ModelAdmin):
+    list_display = ("name", "task_count")
+    search_fields = ("name",)
+    inlines = [TaskInline]
+
+    def task_count(self, obj):
+        return obj.task_count()
+    task_count.short_description = "Tasks count"
