@@ -182,3 +182,18 @@ class TaskTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
 class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = TaskType
     success_url = reverse_lazy("drones:tasktype-list")
+
+
+@login_required
+def toggle_assign_to_task(request, pk):
+    worker = request.user
+    task = Task.objects.get(pk=pk)
+
+    if worker in task.assignees.all():
+        task.assignees.remove(worker)
+    else:
+        task.assignees.add(worker)
+
+    return HttpResponseRedirect(reverse(
+        "drones:task-detail", args=[pk])
+    )
