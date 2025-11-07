@@ -99,4 +99,25 @@ urlpatterns = [
         PositionDeleteView.as_view(),
         name="position-delete"
     ),
+    #  Task-types
+    path(
+        "tasktypes/",
+        TaskTypeListView.as_view(),
+        name="tasktype-list"
+    ),
+    path(
+        "tasktypes/create/",
+        TaskTypeCreateView.as_view(),
+        name="tasktype-create"
+    ),
+    path(
+        "tasktypes/<int:pk>/update/",
+        TaskTypeUpdateView.as_view(),
+        name="tasktype-update"
+    ),
+    path(
+        "tasktypes/<int:pk>/delete/",
+        TaskTypeDeleteView.as_view(),
+        name="tasktype-delete"
+    ),
 ]
