@@ -1,24 +1,25 @@
 from django.urls import path
 
 from .views import (
-TaskListView,
-TaskDetailView,
-TaskCreateView,
-TaskDeleteView,
-TaskUpdateView,
-WorkerListView,
-WorkerDetailView,
-WorkerCreateView,
-WorkerDeleteView,
-PositionListView,
-PositionCreateView,
-PositionDeleteView,
-PositionUpdateView,
-TaskTypeListView,
-TaskTypeCreateView,
-TaskTypeUpdateView,
-TaskTypeDeleteView,
-toggle_assign_to_task,
+    index,
+    TaskListView,
+    TaskDetailView,
+    TaskCreateView,
+    TaskDeleteView,
+    TaskUpdateView,
+    WorkerListView,
+    WorkerDetailView,
+    WorkerCreateView,
+    WorkerDeleteView,
+    PositionListView,
+    PositionCreateView,
+    PositionDeleteView,
+    PositionUpdateView,
+    TaskTypeListView,
+    TaskTypeCreateView,
+    TaskTypeUpdateView,
+    TaskTypeDeleteView,
+    toggle_assign_to_task,
 )
 
 
@@ -26,6 +27,7 @@ app_name = "drones"
 
 
 urlpatterns = [
+    path("", index, name="index"),
     #  Tasks
     path(
         "tasks/",
