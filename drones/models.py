@@ -8,7 +8,12 @@ from django.urls import reverse
 
 
 class Worker(AbstractUser):
-    position = models.ForeignKey("Position", on_delete=models.PROTECT)
+    position = models.ForeignKey(
+        "Position",
+        on_delete=models.PROTECT,
+        verbose_name="Position",
+        blank=True,
+        null=True)
 
     class Meta:
         verbose_name = "worker"
@@ -23,12 +28,12 @@ class Worker(AbstractUser):
     @property
     def done_tasks_count(self):
         # Done tasks
-        return self.task.filter(is_done=True).count()
+        return self.tasks.filter(is_done=True).count()
 
     @property
     def pending_tasks_count(self):
         # Undone tasks
-        return self.task.filter(is_done=False).count()
+        return self.tasks.filter(is_done=False).count()
 
 
 class Task(models.Model):
@@ -51,12 +56,12 @@ class Task(models.Model):
     task_type = models.ForeignKey("TaskType", on_delete=models.CASCADE)
     assignees = models.ManyToManyField(
         Worker,
-        related_name="task",
+        related_name="tasks",
         verbose_name="worker",
     )
 
     def __str__(self):
-        return f"{self.name} ({'is done' if self.is_done else 'in work'})"
+        return f"{self.name} ({'Is done' if self.is_done else 'In progress'})"
 
 
 class TaskType(models.Model):
