@@ -59,3 +59,29 @@ class WorkerAdmin(UserAdmin):
     def pending_tasks_count(self, obj):
         return obj.pending_tasks_count
     pending_tasks_count.short_description = "Pending tasks"
+
+
+@admin.register(Task)
+class TaskAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "task_type",
+        "priority",
+        "is_done",
+        "deadline",
+        "display_assignees",
+    )
+    list_filter = (
+        "is_done",
+        "priority",
+        "task_type",
+        "assignees__position",
+    )
+    search_fields = ("name", "description", "task_type__name", "assignees__username")
+    date_hierarchy = "deadline"
+    ordering = ("-deadline",)
+    filter_horizontal = ("assignees",)
+
+    def display_assignees(self, obj):
+        return ", ".join([worker.username for worker in obj.assignees.all()])
+    display_assignees.short_description = "Workers"
