@@ -59,3 +59,15 @@ class Task(models.Model):
         return f"{self.name} ({'is done' if self.is_done else 'in work'})"
 
 
+class TaskType(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Task_type_name")
+
+    def __str__(self):
+        return self.name
+
+
+class Position(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Position_name")
+
+    def __str__(self):
+        return self.name
