@@ -13,6 +13,20 @@ class TaskInline(admin.TabularInline):
     show_change_link = True
 
 
+class WorkerInline(admin.TabularInline):
+    model = Worker
+    extra = 0
+    fields = ("username", "first_name", "last_name", "email", "is_staff")
+    readonly_fields = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "is_staff"
+    )
+    show_change_link = True
+
+
 #  Custom for Worker
 @admin.register(Worker)
 class WorkerAdmin(UserAdmin):
@@ -102,7 +116,7 @@ class TaskTypeAdmin(admin.ModelAdmin):
 class PositionAdmin(admin.ModelAdmin):
     list_display = ("name", "worker_count")
     search_fields = ("name",)
-    inlines = [TaskInline]
+    inlines = [WorkerInline]
 
     def worker_count(self, obj):
         return obj.worker_count()
