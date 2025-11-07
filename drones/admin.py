@@ -11,3 +11,51 @@ class TaskInline(admin.TabularInline):
     fields = ("name", "is_done", "priority", "deadline")
     readonly_fields = ("name", "is_done", "priority", "deadline")
     show_change_link = True
+
+
+#  Custom for Worker
+@admin.register(Worker)
+class WorkerAdmin(UserAdmin):
+    list_display = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "position",
+        "is_staff",
+        "done_tasks_count",
+        "pending_tasks_count",
+    )
+    list_filter = ("position", "is_staff", "is_superuser", "is_active")
+    search_fields = ("username", "first_name", "last_name", "email")
+    ordering = ("id",)
+
+    fieldsets = UserAdmin.fieldsets + (
+        (
+            "Additional information",
+            {
+                "fields": ("position",),
+            },
+        ),
+    )
+    add_fieldsets = UserAdmin.add_fieldsets + (
+        (
+            "Additional information",
+            {
+                "fields": (
+                    "first_name",
+                    "last_name",
+                    "email",
+                    "position",
+                ),
+            },
+        ),
+    )
+
+    def done_tasks_count(self, obj):
+        return obj.done_tasks_count
+    done_tasks_count.short_description = "Done tasks"
+
+    def pending_tasks_count(self, obj):
+        return obj.pending_tasks_count
+    pending_tasks_count.short_description = "Pending tasks"
