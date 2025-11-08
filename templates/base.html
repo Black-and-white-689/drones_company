@@ -29,7 +29,17 @@
           </a>
           </li>
           <li class="list-group-item">
-            <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+            <form
+                action="{% url 'logout' %}"
+                method="post" style="display:inline;">
+              {% csrf_token %}
+              <button
+                  type="submit"
+                  class="btn btn-link p-0"
+                  style="text-decoration:none;">
+                Logout
+              </button>
+            </form>
           </li>
         {% else %}
           <li class="list-group-item">
