@@ -75,5 +75,8 @@ class TaskType(models.Model):
 class Position(models.Model):
     name = models.CharField(max_length=255, verbose_name="Position_name")
 
+    def worker_count(self):
+        return self.worker_set.count()
+
     def __str__(self):
         return self.name
