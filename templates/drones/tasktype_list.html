@@ -5,6 +5,11 @@
 {% block content %}
   <h1>All Task Types</h1>
 
+  <form method="get" class="mb-3">
+  {{ search_form.q }}
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
   <p>
     <a
         href="{% url 'drones:tasktype-create' %}"
