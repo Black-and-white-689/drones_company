@@ -1,73 +1,103 @@
-{% extends "base.html" %}
+{% extends "layouts/base-presentation.html" %}
 
-{% block title %}Workers{% endblock %}
+{% block title %}All Workers{% endblock title %}
 
 {% block content %}
-  <h1>All Workers</h1>
+<section class="py-5 mt-7">
+  <div class="container">
 
-  <form method="get" class="mb-3">
-  {{ search_form.q }}
-    <button type="submit" class="btn btn-primary">Search</button>
-  </form>
+    <div class="row mb-4">
+      <div class="col-lg-8 col-md-10 mx-auto text-center">
+        <h2 class="text-gradient text-info">All Workers</h2>
+      </div>
+    </div>
 
-  <p>
-    <a href="{% url 'drones:worker-create' %}" class="btn btn-primary">
-      [+ Add new worker]
-    </a>
-  </p>
+    <div class="card shadow-lg">
+      <div class="card-body">
 
-  {% if worker_list %}
-    <table class="table table-hover table-bordered align-middle">
-      <thead class="table-light">
-        <tr>
-          <th>
-            ID
-          </th>
-          <th>
-            Username
-          </th>
-          <th>
-            Full name
-          </th>
-          <th>
-            Position
-          </th>
-          <th>
-            Actions
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for worker in worker_list %}
-          <tr>
-            <td>
-              {{ worker.id }}
-            </td>
-            <td>
-              <a href="{% url 'drones:worker-detail' worker.id %}">
-                {{ worker.username }}
-              </a>
-            </td>
-            <td>
-              {{ worker.first_name }} {{ worker.last_name }}
-            </td>
-            <td>
-              {{ worker.position }}
-            </td>
-            <td>
-              <a
-                  href="{% url 'drones:worker-delete' worker.id %}"
-                  class="btn btn-sm btn-outline-danger">
-                Delete
-              </a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <p>No workers found.</p>
-  {% endif %}
+        <form method="get" class="row g-2 mb-4 align-items-center">
+          <div
+              class="col-md-8 d-flex align-items-center justify-content-start">
+            {% load crispy_forms_tags %}
+            {{ search_form.q|as_crispy_field }}
+          </div>
+          <div class="col-md-4 text-end">
+            <button
+                class="btn bg-gradient-info me-2"
+                type="submit"
+                style="font-size: 0.95rem; font-weight: 550;">
+              <i class="fas fa-search"></i> Search
+            </button>
+            <a
+                href="{% url 'drones:worker-create' %}"
+                class="btn bg-gradient-success text-white"
+                style="font-size: 0.95rem; font-weight: 550;">
+              [+ Add Worker]
+            </a>
+          </div>
+        </form>
 
-  {% include "includes/pagination.html" %}
-{% endblock %}
+        <div class="table-responsive">
+          <table class="table align-items-center mb-0 table-centered">
+            <thead class="bg-gradient-light">
+              <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                  ID
+                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                  Username
+                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                  Full Name
+                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                  Position
+                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for worker in worker_list %}
+                <tr>
+                  <td>{{ worker.id }}</td>
+
+                  <td>
+                    <a href="{% url 'drones:worker-detail' worker.id %}"
+                       class="text-dark font-weight-bold">
+                      {{ worker.username }}
+                    </a>
+                  </td>
+
+                  <td>{{ worker.first_name }} {{ worker.last_name }}</td>
+                  <td>{{ worker.position }}</td>
+
+                  <td>
+                    <a href="{% url 'drones:worker-delete' worker.id %}"
+                       class="btn btn-sm bg-gradient-danger text-white"
+                       style="font-size: 0.95rem; font-weight: 550; margin-top: 12px;">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="5" class="text-center text-muted py-4">
+                    No workers found.
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        {% include "includes/pagination.html" %}
+
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock content %}
