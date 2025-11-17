@@ -24,7 +24,10 @@ class Worker(AbstractUser):
                 f"Position: {self.position})")
 
     def get_absolute_url(self):
-        return reverse("drones:worker-detail", kwargs={"pk": self.pk})
+        return reverse(
+            "drones:worker-detail",
+            kwargs={"pk": self.pk}
+        )
 
     @property
     def done_tasks_count(self):
@@ -44,17 +47,34 @@ class Task(models.Model):
         MEDIUM = "Medium"
         LOW = "Low"
 
-    name = models.CharField(max_length=255, verbose_name="Task_name")
-    description = models.TextField(blank=True, null=True, verbose_name="Task_description")
-    deadline = models.DateField(verbose_name="Deadline", null=True, blank=True)
-    is_done = models.BooleanField(default=False, verbose_name="Done")
+    name = models.CharField(
+        max_length=255,
+        verbose_name="Task_name"
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Task_description"
+    )
+    deadline = models.DateField(
+        verbose_name="Deadline",
+        null=True,
+        blank=True
+    )
+    is_done = models.BooleanField(
+        default=False,
+        verbose_name="Done"
+    )
     priority = models.CharField(
         max_length=10,
         choices=Priority.choices,
         default=Priority.MEDIUM,
         verbose_name="Priority"
     )
-    task_type = models.ForeignKey("TaskType", on_delete=models.CASCADE)
+    task_type = models.ForeignKey(
+        "TaskType",
+        on_delete=models.CASCADE
+    )
     assignees = models.ManyToManyField(
         Worker,
         related_name="tasks",
@@ -66,14 +86,20 @@ class Task(models.Model):
 
 
 class TaskType(models.Model):
-    name = models.CharField(max_length=255, verbose_name="Task_type_name")
+    name = models.CharField(
+        max_length=255,
+        verbose_name="Task_type_name"
+    )
 
     def __str__(self):
         return self.name
 
 
 class Position(models.Model):
-    name = models.CharField(max_length=255, verbose_name="Position_name")
+    name = models.CharField(
+        max_length=255,
+        verbose_name="Position_name"
+    )
 
     def worker_count(self):
         return self.worker_set.count()
