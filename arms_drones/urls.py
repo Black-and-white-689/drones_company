@@ -18,8 +18,6 @@ urlpatterns = [
 
 if settings.DEBUG:
     import debug_toolbar
-    from django.shortcuts import render
-
 
     def show_500(request):
         return render(request, "500.html", status=500)
