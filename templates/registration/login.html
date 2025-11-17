@@ -1,34 +1,95 @@
-{% extends "base.html" %}
+{% extends 'layouts/base-fullscreen.html' %}
+
 {% load crispy_forms_filters %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Sign IN{% endblock title %}
+
+{% block body_class %} sign-in-illustration {% endblock body_class %}
 
 {% block content %}
-  <div class="container mt-5" style="max-width: 500px;">
-    <h2 class="text-center mb-4">Login</h2>
 
-    {% if form.errors %}
-      <div class="alert alert-danger">
-        <strong>Incorrect username or password.</strong> Please try again.
+  <section>
+    <div class="page-header section-height-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+            <div class="card card-plain">
+
+              <div class="card-header pb-0 text-left">
+                <h4 class="font-weight-bolder">Sign In</h4>
+                {% if next %}
+                  <p class="mb-0 text-muted">Please log in to see this page.</p>
+                {% else %}
+                  <p class="mb-0 text-muted">Add your credentials</p>
+                {% endif %}
+              </div>
+
+              <div class="card-body">
+
+                {% if form.errors %}
+                  <div class="alert alert-danger text-sm">
+                    <strong>Incorrect username or password.</strong> Please try again.
+                  </div>
+                {% endif %}
+
+                <form method="post" action="{% url 'login' %}" role="form">
+                  {% csrf_token %}
+
+                  <div class="mb-3">
+                    {{ form.username|as_crispy_field }}
+                  </div>
+                  <div class="mb-3">
+                    {{ form.password|as_crispy_field }}
+                  </div>
+
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                  </div>
+
+                  <input type="hidden" name="next" value="{{ next }}">
+
+                  <div class="text-center">
+                    <button type="submit" name="login" class="btn btn-lg bg-gradient-info w-100 mt-4 mb-0">
+                      Sign in
+                    </button>
+                  </div>
+                </form>
+
+              </div>
+
+              <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                <p class="mb-4 text-sm mx-auto">
+                </p>
+                <p class="mb-4 text-sm mx-auto">
+                  Don't have an account? Forgot password? Contact admin to create an account!
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
+            <div class="position-relative bg-gradient-info h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center">
+              <img src="/static/assets/img/shapes/pattern-lines.svg" alt="pattern-lines" class="position-absolute opacity-4 start-0">
+              <div class="position-relative">
+                <img class="max-width-500 w-100 position-relative z-index-2" src="/static/assets/img/illustrations/chat2.png" alt="chat illustration">
+              </div>
+              <h4 class="mt-5 text-white font-weight-bolder">
+                Any questions? Contact us:
+              </h4>
+              <p class="text-white">
+                <a target="_blank" class="text-white" href="https://bit.ly/3fKQZaL">admin@mail.com</a>
+              </p>
+            </div>
+          </div>
+
+        </div>
       </div>
-    {% endif %}
-
-    {% if next %}
-      <p class="text-muted text-center">Please log in to see this page.</p>
-    {% endif %}
-
-    <form method="post" action="{% url 'login' %}">
-      {% csrf_token %}
-      {{ form|crispy }}
-
-      <div class="d-grid gap-2 mt-3">
-        <button type="submit" class="btn btn-primary">Login</button>
-      </div>
-      <input type="hidden" name="next" value="{{ next }}">
-    </form>
-
-    <div class="text-center mt-3">
-      <a href="{% url 'password_reset' %}">Forgot password?</a>
     </div>
-  </div>
-{% endblock %}
+  </section>
+{% endblock content %}
+
+{% block javascripts %}
+  <script src="/static/assets/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>
+{% endblock javascripts %}
