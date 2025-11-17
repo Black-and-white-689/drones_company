@@ -91,7 +91,12 @@ class TaskAdmin(admin.ModelAdmin):
         "task_type",
         "assignees__position",
     )
-    search_fields = ("name", "description", "task_type__name", "assignees__username")
+    search_fields = (
+        "name",
+        "description",
+        "task_type__name",
+        "assignees__username"
+    )
     date_hierarchy = "deadline"
     ordering = ("-deadline",)
     filter_horizontal = ("assignees",)
