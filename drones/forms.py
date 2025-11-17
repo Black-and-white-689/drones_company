@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 
 from django.contrib.auth.forms import UserCreationForm
 
+from django.forms import DateInput
+
 from drones.models import Worker, Task
 
 
@@ -19,6 +21,9 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = "__all__"
+        widgets = {
+            "deadline": DateInput(attrs={"type": "date"})
+        }
 
 
 #  Search forms

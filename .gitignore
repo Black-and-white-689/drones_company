@@ -14,5 +14,8 @@ logs/
 node_modules/
 __pycache__/
 *.pyc
-/static/
+staticfiles/
+/staticfiles/
+/static/staticfiles/
+/static_root/
 media/
