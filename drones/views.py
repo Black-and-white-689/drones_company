@@ -61,7 +61,7 @@ def index(request):
         "num_tasks_done": num_tasks_done,
         "num_tasks_pending": num_tasks_pending,
         "tasks_done_this_month": tasks_done_this_month,
-        "current_month": now.strftime("%B"),  # Например, "November"
+        "current_month": now.strftime("%B"),
         "num_visits": num_visits + 1,
     }
 
@@ -81,7 +81,8 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = super().get_queryset().select_related("task_type").prefetch_related("assignees")
+        queryset = super().get_queryset().select_related(
+            "task_type").prefetch_related("assignees")
         query = self.request.GET.get("q")
         if query:
             queryset = queryset.filter(
