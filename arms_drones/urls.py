@@ -18,4 +18,30 @@ urlpatterns = [
 
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns += [path("__debug__/", include(debug_toolbar.urls))]
+    from django.shortcuts import render
+
+
+    def show_500(request):
+        return render(request, "500.html", status=500)
+
+
+    def show_404(request, exception=None):
+        return render(request, "404.html", status=404)
+
+
+    urlpatterns += [path("__debug__/", include(debug_toolbar.urls)),
+                    path("test500/", show_500),
+                    path("test404/", show_404), ]
+
+
+def custom_404(request, exception):
+    return render(request, "404.html", status=404)
+
+
+def custom_500(request):
+    return render(request, "500.html", status=500)
+
+
+handler404 = "arms_drones.urls.custom_404"
+
+handler500 = "arms_drones.urls.custom_500"
