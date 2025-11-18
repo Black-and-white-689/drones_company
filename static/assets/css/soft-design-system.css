@@ -27,8 +27,8 @@
   --bs-light: #e9ecef;
   --bs-dark: #252f40;
   --bs-white: #fff;
-  --input-focus-border: rgb(53, 64, 36);       /* Kombu Green рамка */
-  --input-focus-shadow: rgba(136, 144, 99, 0.25); /* Moss Green glow */
+  --input-focus-border: rgb(53, 64, 36);       /* Kombu Green */
+  --input-focus-shadow: rgba(136, 144, 99, 0.25); /* Moss Green */
   --bs-font-sans-serif: Open Sans;
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)); }
