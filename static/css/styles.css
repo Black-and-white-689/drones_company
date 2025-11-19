@@ -1,0 +1,97 @@
+/* Исправление: ограничить область клика по sidebar ссылкам */
+.main-sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto !important;
+  max-width: 100%;
+  padding: 8px 15px;
+}
+
+.main-sidebar .nav-item {
+  width: 100%;
+  position: relative;
+}
+
+.main-sidebar .nav-link p {
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Чтобы убрать перекрытие кликов на контент */
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+/* --- Fix for invisible sidebar overlay issue --- */
+.main-sidebar {
+  z-index: 1030; /* под навбаром, но не над контентом */
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1; /* контент выше бокового меню */
+  background: #f4f6f9;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Убедимся, что кликабельная область меню не перекрывает контент */
+.nav-sidebar .nav-link {
+  position: relative;
+  z-index: auto;
+}
+
+.main-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 1030; /* под navbar */
+}
+
+/* Контент должен идти справа от sidebar */
+.content-wrapper {
+  margin-left: 250px;
+  position: relative;
+  z-index: 1;
+  background: #f4f6f9;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Дополнительно гарантируем, что ссылки не растягиваются */
+.nav-sidebar {
+  position: relative;
+  z-index: 2;
+}
+
+.nav-sidebar .nav-link {
+  display: flex !important;
+  align-items: center;
+  position: relative;
+  z-index: auto;
+  width: 100%;
+}
+
+.form-check-input {
+  border-radius: 4px !important;
+}
+
+.form-check-input:checked {
+  background-color: #cb0c9f !important; /* цвет как в теме */
+  border-color: #cb0c9f !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='white' d='M7.629 13.233l-3.3-3.3 1.414-1.414 1.886 1.886 4.95-4.95 1.414 1.414z'/%3e%3c/svg%3e") !important;
+}
+
+.form-check-input:checked::before {
+  content: "\2713";
+  display: block;
+  font-size: 14px;
+  color: white;
+  position: relative;
+  top: -2px;
+  left: 2px;
+}

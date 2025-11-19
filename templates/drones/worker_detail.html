@@ -1,0 +1,65 @@
+{% extends "layouts/base-presentation.html" %}
+
+{% load static %}
+
+{% block title %}Worker Detail{% endblock %}
+
+{% block content %}
+<div class="container py-4 mt-7">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div class="card shadow-lg">
+        <div class="card-body text-center">
+
+          <div class="mb-4">
+            <img
+              src="/static/assets/img/curved-images/avatar/ava1.jpg"
+              alt="User profile picture"
+              class="rounded-circle img-fluid"
+              style="width: 120px; height: 120px;"
+            >
+          </div>
+
+          <h4 class="mb-1">{{ worker.username }}</h4>
+
+          <p class="text-muted">
+            {% if worker.position %}
+              {{ worker.position.name }}
+            {% else %}
+              No position assigned
+            {% endif %}
+          </p>
+
+          <ul class="list-group mb-4 text-start">
+            <li class="list-group-item d-flex justify-content-between">
+              <strong>Email</strong>
+              <span>{{ worker.email }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <strong>First name</strong>
+              <span>{{ worker.first_name|default:"—" }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <strong>Last name</strong>
+              <span>{{ worker.last_name|default:"—" }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <strong>Assigned tasks</strong>
+              <span>{{ worker.tasks.count }}</span>
+            </li>
+          </ul>
+
+          <a href="{% url 'drones:worker-list' %}"
+             class="btn bg-gradient-info w-100"
+             style="font-size: 0.95rem; font-weight: 550;">
+            Back to list
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "layouts/base-presentation.html" %}
+
+{% block title %}All Tasks{% endblock title %}
+
+{% block content %}
+<section class="py-5 mt-7">
+  <div class="container">
+
+    <div class="row mb-4">
+      <div class="col-lg-8 col-md-10 mx-auto text-center">
+        <h2 class="text-gradient text-info">Tasks</h2>
+      </div>
+    </div>
+
+    <div class="card shadow-lg">
+      <div class="card-body">
+
+        <form method="get" class="row g-2 mb-4 align-items-center">
+          <div class="col-md-8 d-flex align-items-center">
+            {% load crispy_forms_tags %}
+            {{ search_form.q|as_crispy_field }}
+          </div>
+          <div class="col-md-4 text-end">
+            <button
+                class="btn bg-gradient-info me-2"
+                type="submit"
+                style="font-size: 0.95rem; font-weight: 550;">
+              <i class="fas fa-search"></i> Search
+            </button>
+            <a
+                href="{% url 'drones:task-create' %}"
+                class="btn bg-gradient-success"
+                style="font-size: 0.95rem; font-weight: 550;">
+              [+ Create Task]
+            </a>
+          </div>
+        </form>
+
+        <div class="table-responsive">
+          <table class="table align-items-center mb-0 table-centered">
+            <thead class="bg-gradient-light">
+              <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                  ID
+                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                  Name
+                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                  Deadline
+                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                  Done
+                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for task in task_list %}
+                <tr>
+                  <td>{{ task.id }}</td>
+                  <td>
+                    <a
+                        href="{% url 'drones:task-detail' task.id %}"
+                        class="text-dark font-weight-bold">
+                      {{ task.name }}
+                    </a>
+                  </td>
+                  <td>{{ task.deadline }}</td>
+                  <td>{{ task.is_done|yesno:"✔,✖" }}</td>
+                  <td>
+                    <a
+                        href="{% url 'drones:task-update' task.id %}"
+                        class="btn btn-sm bg-gradient-info text-white"
+                        style="font-size: 0.95rem; font-weight: 550; margin-top: 12px;">
+                      Edit
+                    </a>
+                    <a
+                        href="{% url 'drones:task-delete' task.id %}"
+                        class="btn btn-sm bg-gradient-danger text-white"
+                        style="font-size: 0.95rem; font-weight: 550; margin-top: 12px;">
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="5" class="text-center text-muted py-4">
+                    No tasks found.
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        {% include "includes/pagination.html" %}
+
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock content %}

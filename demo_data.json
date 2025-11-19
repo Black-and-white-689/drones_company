@@ -1,0 +1,478 @@
+[
+{
+  "model": "sessions.session",
+  "pk": "6wqm94kvebxq3jk7s1x15e5eo720cc4m",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSEWMGCX6XMGtIYlJh8sGTtNlLvHSC6S9s3MezOP2zr5rdLic2QDA3b63UYMdyoNxBuW68zDXNYlj7wp_KCVX-ZIj_Ph_h1MWKdWJ22xM5pAGKesFWRjAo1ByqSMNDpGG0gL7JPrew1BgCNJe6A6Azjup2V7-leuea1sAPX5AnkjPNc:1vI1re:pfoT3TmAj8nKA1HGoEDpGosHf-3VFX3aBCFePVvoAI4",
+    "expire_date": "2025-11-23T09:37:38.187Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "k6m4av1wv3k5pjflowvrfrfw5m9hv70p",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSHAGLDL9DkDWmAJ5AOSsdNEuXuM5CJp38y8N7GwrcluDRebA5kJJ6ffzYG_Y-kg3KBcK_W1rEt2tCv0oI1easDH-XD_DhK01OsoNYxKImfKDFoz1CFyCV6IOCihZAjao2QwRTNNknvGDQrcg2FUHNx-WranfeWW10Zm9fkCPKA8qQ:1vI2p0:N2RzYTBH-cR6cMgIe3-rzejNXmeAMD3awuBLZpUrWJc",
+    "expire_date": "2025-11-23T10:38:58.106Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "uttoj5c6n11m63fotf466fbwi5xrun5u",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSHAfIzL9DkD2oUlJh8sGTtNlLvHllwk7Zt582YB1mUMa6M5lMQGJtnpd0OId6o7SDeo14nHqS5zQb4r_KCNX6ZEj_Ph_gVGaOP2duBFIqeyQqOUQUuAWXjnRTTRdkhC5ITkJCXVAVjda1Sud7JH4TPoLVrXZ3iVVpbGBvP5AmXDPVo:1vLLhc:KZLrxWpgX5FWDneYvwglfn7NaNlf7FpM_Y2-t_DNPZg",
+    "expire_date": "2025-12-02T13:25:00.551Z"
+  }
+},
+{
+  "model": "drones.worker",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$GQnRoA7jweKGWzl2vhouMQ$gpATBhGXvKvS07bwkI0GA3kyHStu60MwamyOLdnr+8Y=",
+    "last_login": "2025-11-18T13:25:00.240Z",
+    "is_superuser": true,
+    "username": "DroneAdmin",
+    "first_name": "",
+    "last_name": "",
+    "email": "drone@drone.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-11-07T20:02:32.746Z",
+    "position": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "drones.worker",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$Q4iFi41201WiWIk1leWXdM$w6Wj2iCJi2W2/29oeGw3lGGWjYd39dG4yjEEbxSfOaY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Bobby_D",
+    "first_name": "Bob",
+    "last_name": "Dylan",
+    "email": "bobD@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-08T16:49:11.256Z",
+    "position": 1,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "drones.worker",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$ny4Ob3OlrlE8AFMcqoIYHC$uHzPwbT4M+2oyJcWIwUGuOf5z1wSPgFIVHDrYn5D+Ww=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Alice_Kup",
+    "first_name": "Alice",
+    "last_name": "Kuper",
+    "email": "Alli@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-08T16:50:20.622Z",
+    "position": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "drones.worker",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$Ex2YWDdxtwfHMxxkFqRTIA$3FmtM6Tb3HdLNFBYJCzjlGWrUtUyddYS784Urx/5Aw4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Frank77",
+    "first_name": "Frank",
+    "last_name": "Bishop",
+    "email": "FBi@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-08T16:51:29.771Z",
+    "position": 3,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "drones.worker",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$xQ3z6uuXJqU7FGfVMFbU2F$O/dNE/qDYYVln7E4k3He9x2C1ygDk6E1orl1GgdYvr4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "KlarkStorm",
+    "first_name": "Klark",
+    "last_name": "Stormer",
+    "email": "klark@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-08T16:52:30.888Z",
+    "position": 4,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "drones.worker",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$1BZWSAiPsvfiniUtUlQudT$/fD0c+wlCzjH647fuCWw/Yi+AB1LuNG/nerEXY9Z43U=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "BruceK9",
+    "first_name": "Bruce",
+    "last_name": "Kimble",
+    "email": "bruccy@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-08T16:53:25.787Z",
+    "position": 5,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "drones.worker",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$t1vrTwwYDyu22IICFdtMKb$HpJ0+x72xTTxpoLOH9jeWcstUDok8AQjM/8Xzb7BalI=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "LawShield",
+    "first_name": "Mark",
+    "last_name": "Reddington",
+    "email": "Advisor@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-17T23:57:43.690Z",
+    "position": 7,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 1,
+  "fields": {
+    "name": "Assemble Frame Alpha",
+    "description": "Assemble the frame and basic lighting of the Alpha drone.",
+    "deadline": "2025-11-15",
+    "is_done": true,
+    "priority": "Medium",
+    "task_type": 1,
+    "assignees": [
+      2,
+      4
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 2,
+  "fields": {
+    "name": "Install OS on Drone Beta",
+    "description": "Install and configure the operating system on the Beta drone.",
+    "deadline": "2025-11-18",
+    "is_done": true,
+    "priority": "High",
+    "task_type": 2,
+    "assignees": [
+      3
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 3,
+  "fields": {
+    "name": "Connect Sensors to Drone Gamma",
+    "description": "Connect sensors, cameras and electronics to the Gamma drone.",
+    "deadline": "2026-01-13",
+    "is_done": false,
+    "priority": "Urgent",
+    "task_type": 3,
+    "assignees": [
+      2
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 4,
+  "fields": {
+    "name": "Package Drone Delta",
+    "description": "Pack the completed Delta drone for transport and storage.",
+    "deadline": "2025-11-24",
+    "is_done": false,
+    "priority": "Low",
+    "task_type": 4,
+    "assignees": [
+      5
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 5,
+  "fields": {
+    "name": "Ship Drone Delta to Base",
+    "description": "Arrange delivery of a packaged Delta drone to a military base.",
+    "deadline": "2025-11-30",
+    "is_done": false,
+    "priority": "Medium",
+    "task_type": 5,
+    "assignees": [
+      5
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 6,
+  "fields": {
+    "name": "Test Drone Epsilon",
+    "description": "Conduct test flights of the Epsilon drone and check the operation of all systems.",
+    "deadline": "2026-12-17",
+    "is_done": false,
+    "priority": "Low",
+    "task_type": 6,
+    "assignees": [
+      6
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 7,
+  "fields": {
+    "name": "Assemble Armaments for Drone Zeta",
+    "description": "Mount weapons and additional modules on the Zeta drone.",
+    "deadline": "2026-01-11",
+    "is_done": false,
+    "priority": "Medium",
+    "task_type": 1,
+    "assignees": [
+      4
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 8,
+  "fields": {
+    "name": "Install OS on Control Module",
+    "description": "Install and configure the operating system for the droneТs primary control unit.",
+    "deadline": "2025-12-30",
+    "is_done": false,
+    "priority": "High",
+    "task_type": 2,
+    "assignees": [
+      3
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 9,
+  "fields": {
+    "name": "Connect Power Distribution Board",
+    "description": "Wire and test the power distribution board to ensure stable voltage for all components.",
+    "deadline": "2025-11-13",
+    "is_done": true,
+    "priority": "Urgent",
+    "task_type": 3,
+    "assignees": [
+      2
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 10,
+  "fields": {
+    "name": "Final Body Assembly",
+    "description": "Assemble the remaining hull components and secure the battery compartment.",
+    "deadline": "2025-11-20",
+    "is_done": true,
+    "priority": "Medium",
+    "task_type": 1,
+    "assignees": [
+      4
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 11,
+  "fields": {
+    "name": "Install Navigation Firmware",
+    "description": "Upload and test the droneТs navigation firmware ensuring stable boot and calibration.",
+    "deadline": "2025-11-30",
+    "is_done": true,
+    "priority": "High",
+    "task_type": 2,
+    "assignees": [
+      3
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 12,
+  "fields": {
+    "name": "Attach Sensor Array",
+    "description": "Mount and connect the front and bottom sensors for obstacle detection.",
+    "deadline": "2025-11-23",
+    "is_done": false,
+    "priority": "High",
+    "task_type": 3,
+    "assignees": [
+      2,
+      4
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 13,
+  "fields": {
+    "name": "Test Flight Stability",
+    "description": "Run a full stability test, including hovering, directional control, and return-to-home.",
+    "deadline": "2025-11-30",
+    "is_done": false,
+    "priority": "Low",
+    "task_type": 6,
+    "assignees": [
+      6
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 14,
+  "fields": {
+    "name": "Seal Package for Shipment",
+    "description": "Add protective foam, seal the box, and prepare labels for outgoing delivery.",
+    "deadline": "2025-12-10",
+    "is_done": false,
+    "priority": "High",
+    "task_type": 4,
+    "assignees": [
+      5
+    ]
+  }
+},
+{
+  "model": "drones.task",
+  "pk": 15,
+  "fields": {
+    "name": "Verify Software-Hardware Sync",
+    "description": "Ensure all firmware modules communicate correctly with hardware components.",
+    "deadline": "2025-11-27",
+    "is_done": false,
+    "priority": "High",
+    "task_type": 6,
+    "assignees": [
+      3,
+      6
+    ]
+  }
+},
+{
+  "model": "drones.tasktype",
+  "pk": 1,
+  "fields": {
+    "name": "Assembly"
+  }
+},
+{
+  "model": "drones.tasktype",
+  "pk": 2,
+  "fields": {
+    "name": "OS installation"
+  }
+},
+{
+  "model": "drones.tasktype",
+  "pk": 3,
+  "fields": {
+    "name": "Electronics connection"
+  }
+},
+{
+  "model": "drones.tasktype",
+  "pk": 4,
+  "fields": {
+    "name": "Packaging"
+  }
+},
+{
+  "model": "drones.tasktype",
+  "pk": 5,
+  "fields": {
+    "name": "Shipping"
+  }
+},
+{
+  "model": "drones.tasktype",
+  "pk": 6,
+  "fields": {
+    "name": "Testing"
+  }
+},
+{
+  "model": "drones.position",
+  "pk": 1,
+  "fields": {
+    "name": "Electrical Engineer"
+  }
+},
+{
+  "model": "drones.position",
+  "pk": 2,
+  "fields": {
+    "name": "Programmer"
+  }
+},
+{
+  "model": "drones.position",
+  "pk": 3,
+  "fields": {
+    "name": "Drone Assembly"
+  }
+},
+{
+  "model": "drones.position",
+  "pk": 4,
+  "fields": {
+    "name": "Finished Product Packer"
+  }
+},
+{
+  "model": "drones.position",
+  "pk": 5,
+  "fields": {
+    "name": "Tester"
+  }
+},
+{
+  "model": "drones.position",
+  "pk": 6,
+  "fields": {
+    "name": "Administrator"
+  }
+},
+{
+  "model": "drones.position",
+  "pk": 7,
+  "fields": {
+    "name": "Lawyer"
+  }
+}
+]
