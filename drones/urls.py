@@ -19,7 +19,8 @@ from .views import (
     TaskTypeCreateView,
     TaskTypeUpdateView,
     TaskTypeDeleteView,
-    toggle_assign_to_task,
+    ToggleAssignToTaskView,
+    # toggle_assign_to_task,
 )
 
 
@@ -55,8 +56,8 @@ urlpatterns = [
         name="task-delete"
     ),
     path(
-        "tasks/<int:pk>/toggle-assign/",
-        toggle_assign_to_task,
+        "tasks/<int:pk>/toggle_assign/",
+        ToggleAssignToTaskView.as_view(),
         name="task-toggle-assign"
     ),
     #  Workers

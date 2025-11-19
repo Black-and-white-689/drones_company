@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = "django-insecure-mfyfr(m-*+b)%33-fz0*y_n=u3%$q@17yi^3zn=&_967p_-v-("
+SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config('DEBUG', default=True, cast=bool)
 # DEBUG = False

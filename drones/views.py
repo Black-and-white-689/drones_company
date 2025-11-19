@@ -10,11 +10,11 @@ from django.http import HttpResponseRedirect
 
 from django.urls import reverse_lazy, reverse
 
-from django.views import generic
+from django.views import generic, View
 
 from .models import Task, Worker, TaskType, Position
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 
 from django.utils import timezone
 
@@ -230,16 +230,14 @@ class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("drones:tasktype-list")
 
 
-@login_required
-def toggle_assign_to_task(request, pk):
-    worker = request.user
-    task = Task.objects.get(pk=pk)
+class ToggleAssignToTaskView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        worker = request.user
+        task = get_object_or_404(Task, pk=pk)
 
-    if worker in task.assignees.all():
-        task.assignees.remove(worker)
-    else:
-        task.assignees.add(worker)
+        if worker in task.assignees.all():
+            task.assignees.remove(worker)
+        else:
+            task.assignees.add(worker)
 
-    return HttpResponseRedirect(reverse(
-        "drones:task-detail", args=[pk])
-    )
+        return redirect("drones:task-detail", pk=pk)
