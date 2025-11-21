@@ -9,10 +9,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = config("SECRET_KEY")
+# SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-mfyfr(m-*+b)%33-fz0*y_n=u3%$q@17yi^3zn=&_967p_-v-(")
 
-DEBUG = config('DEBUG', default=True, cast=bool)
-# DEBUG = False
+# DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 ALLOWED_HOSTS = [
     "localhost",
