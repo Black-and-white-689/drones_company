@@ -3,7 +3,13 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "arms-drones.onrender.com",
+    "localhost",
+    "localhost:85",
+    "127.0.0.1",
+    config("SERVER", default="127.0.0.1"),
+]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
