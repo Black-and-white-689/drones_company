@@ -3,11 +3,18 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "localhost:85",
-    "127.0.0.1",
-    config("SERVER", default="127.0.0.1"),
+ALLOWED_HOSTS = []
+
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 DATABASES = {
