@@ -146,19 +146,24 @@
                         Main Sections
                       </h6>
                       <a
-                          href="/page-about-us.html"
+                          href="{% url 'drones:task-list' %}"
                           class="dropdown-item border-radius-md">
-                        About Us
+                        Tasks
                       </a>
                       <a
-                          href="/page-contact-us.html"
+                          href="{% url 'drones:worker-list' %}"
                           class="dropdown-item border-radius-md">
-                        Contact Us
+                        Workers
                       </a>
                       <a
-                          href="/page-author.html"
+                          href="{% url 'drones:position-list' %}"
                           class="dropdown-item border-radius-md">
-                        Author
+                        Positions
+                      </a>
+                      <a
+                          href="{% url 'drones:tasktype-list' %}"
+                          class="dropdown-item border-radius-md">
+                        Task Types
                       </a>
                       <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center px-0 mt-3">
                         <div class="d-inline-block">
